@@ -1,0 +1,70 @@
+<html>
+<head>
+<script language="javaScript">
+
+
+var counter = 0;
+var picList = ["images/slideshow/slide1george.jpg",
+			   "images/slideshow/slide2paul.jpg", 
+			   "images/slideshow/slide3john.jpg",
+			   "images/slideshow/slide4ringo.jpg",
+			   "images/slideshow/slide5thebeatles.jpg",
+			   "images/slideshow/thebeatle.jpg"];
+/*var clipList = ["sounds/george.mp3"
+				"sounds/paul.mp3"
+				"sounds/john.mp3"
+				"sounds/ringo.mp3"
+				"sounds/thebeatles.mp3"
+				"sounds/thebeatle.mp3"]; */
+
+function nextPic()
+{
+	counter++;
+	document.getElementById("display").src = picList[counter];
+	incrementCounter();
+	//document.getElementById("player").src = clipList[counter];
+	
+	
+}
+
+function run()
+{
+	//player is like a record player
+	//player.src is like putting a record on the turn table
+	document.getElementById("player").src = "sounds/george.mp3";
+	document.getElementById("player").play();
+
+}
+
+function incrementCounter()
+{
+if(counter == picList.length)
+	
+	{
+		counter = 0;
+	}
+	
+}
+	
+
+</script>
+
+
+</head>
+<body>
+<center>
+<hl> My Slideshow </hl><br/>
+
+Click <a href="index.html">here </a> to return to my homepage. <br/><br/>
+
+
+<input type="button" value="Next picture" onclick="nextPic()"/>
+<input type="button" value="Run Slideshow" onclick="run()"/>
+<br/><br/>
+<img src="images/slideshow/slide1george.jpg" id="display"/>
+
+<audio id="player"> <audio/>
+</center>
+
+</body>
+</html>
