@@ -1,49 +1,71 @@
 <html>
 <head>
 <script language="javaScript">
-
-
-var counter = 0;
+var counter = -1;
 var picList = ["images/slideshow/slide1george.jpg",
 			   "images/slideshow/slide2paul.jpg", 
 			   "images/slideshow/slide3john.jpg",
 			   "images/slideshow/slide4ringo.jpg",
 			   "images/slideshow/slide5thebeatles.jpg",
 			   "images/slideshow/thebeatle.jpg"];
-/*var clipList = ["sounds/george.mp3"
-				"sounds/paul.mp3"
-				"sounds/john.mp3"
-				"sounds/ringo.mp3"
-				"sounds/thebeatles.mp3"
-				"sounds/thebeatle.mp3"]; */
 
+var clipList = ["sounds/george.mp3",
+				"sounds/paul.mp3",
+				"sounds/john.mp3",
+				"sounds/ringo.mp3",
+				"sounds/thebeatles.mp3",
+				"sounds/thebeatle(2).mp3"]; 
+var timer;
+var autoStart = false;
 function nextPic()
-{
+{	
 	counter++;
+	document.getElementById("player").src = clipList[counter];
 	document.getElementById("display").src = picList[counter];
+	document.getElementById("player").play();
 	incrementCounter();
-	//document.getElementById("player").src = clipList[counter];
-	
-	
 }
 
 function run()
 {
-	//player is like a record player
-	//player.src is like putting a record on the turn table
-	document.getElementById("player").src = "sounds/george.mp3";
-	document.getElementById("player").play();
-
+	
+	if(autoStart == false)
+	{
+		autoStart = true;
+		document.getElementById("runButton").value = "Pause";
+	}
+	
+	else
+	{
+		autoStart = false;
+		document.getElementById("runButton").value = "Run Slide";
+	}
+	autoPlay();
 }
 
 function incrementCounter()
 {
-if(counter == picList.length)
+	if(counter == picList.length-1)
 	
 	{
-		counter = 0;
+		counter = -1;
 	}
 	
+}
+
+function autoPlay()
+{
+	if( autoStart == true)
+	{
+		nextPic();
+		//var clipTime = clipList[counter].length;
+		//timer = setTimeout("autoPlay()", clipTime*100);
+		timer = setTimeout("autoPlay()", 5000);
+	}
+	else
+	{
+		clearTimeout(timer);
+	}
 }
 	
 
@@ -53,13 +75,14 @@ if(counter == picList.length)
 </head>
 <body>
 <center>
+<font color="orange" face="Cooper" size=4>
 <hl> My Slideshow </hl><br/>
 
 Click <a href="index.html">here </a> to return to my homepage. <br/><br/>
 
 
 <input type="button" value="Next picture" onclick="nextPic()"/>
-<input type="button" value="Run Slideshow" onclick="run()"/>
+<input type="button" value="Run Slideshow" onclick="run()" id="runButton"/>
 <br/><br/>
 <img src="images/slideshow/slide1george.jpg" id="display"/>
 
