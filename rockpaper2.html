@@ -1,0 +1,189 @@
+<html>
+<head>
+<script language = Javascript>
+var counter = 0;
+var userScore = "";
+var aiScore = "";
+var userAnswer = "";
+var aiAnswer = "";
+var roundWinner;
+var user;
+var ai;
+var selection = [
+"rock",
+"paper",
+"scissors",
+"tiger",
+"dynatmite",
+"tsunami",
+"lobster",
+"person",
+"tree",
+"glass",
+"brad",
+"slug",
+"salt",
+"baseball bat",
+"boomerang",
+"thanos",
+"plastic bag",
+"turtle",
+"frying pan",
+"cow"
+]
+var rank = [
+"1",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10",
+"11",
+"12",
+"13",
+"14",
+"15",
+"16",
+"17",
+"18",
+"19",
+"20",
+  ]
+var picList = [
+"images/rockpaperimgs/rock.jfif",
+"images/rockpaperimgs/paper.jfif",
+"images/rockpaperimgs/scissors.jfif",
+"images/rockpaperimgs/tiger.jfif",
+"images/rockpaperimgs/dynamite.jfif",
+"images/rockpaperimgs/tsunami.jfif",
+"images/rockpaperimgs/lobster.jfif",
+"images/rockpaperimgs/person.jfif",
+"images/rockpaperimgs/tree.jfif",
+"images/rockpaperimgs/glass.jfif",
+"images/rockpaperimgs/brad.jfif",
+"images/rockpaperimgs/slug.jfif",
+"images/rockpaperimgs/salt.jfif",
+"images/rockpaperimgs/bat.webp",
+"images/rockpaperimgs/boomerang.jfif",
+"images/rockpaperimgs/thanos.jfif",
+"images/rockpaperimgs/plasticbag.jfif",
+"images/rockpaperimgs/turtle.jfif",
+"images/rockpaperimgs/pan.jfif",
+"images/rockpaperimgs/cow.jfif",
+ ]
+
+
+function choose()
+{
+aiAnswer = parseInt(Math.random()*20);
+document.getElementById("chosen").src = picList[aiAnswer];
+document.getElementById("chosen").style.visibility ="visible";
+win();
+}
+
+
+
+function win()
+{
+
+ if (userAnswer > aiAnswer)
+  {
+userScore++;
+roundWinner=user;
+alert("You won!");
+  }
+  else if (userAnswer < aiAnswer)
+  {
+aiScore++;
+roundWinner=ai;
+alert("You lost!");
+  }
+ bestOutOfThree(whoWon);
+}
+
+
+function item(whatIsIt)
+{
+
+
+var item = selection[whatIsIt];
+userAnswer = rank[whatIsIt];
+
+document.getElementById("image").src=picList[whatIsIt];
+
+
+}
+function bestOutOfThree(iWon)
+{
+if(userScore==2)
+{
+userScore = 0;
+aiScore = 0;
+alert("You won against the AI!!!");
+}
+if else(aiScore==2)
+{
+userScore = 0;
+aiScore = 0;
+alert("You lost against the AI.  :(");
+}
+else
+{
+whatsBetter();
+}
+}
+
+
+</script>
+</head>
+<body>
+<center>
+<font color = "#8df7b9" size = 6 face="Snap ITC">
+<body bgcolor="#5cb3db">
+<hl> Rock Paper Scissors ADVANCED </hl><br/><br/>
+<font color = "blue" size=3>
+<input type="radio" id="terms" name="qType" onchange="restart()" checked>
+  <label for="terms">Bestofthree</label>
+<input type="radio" id="defs" name="qType" on>
+  <label for="defs">Infinite</label>
+</center>
+<input type ="button" value=" rock " onclick="item(0)"/>
+<input type ="button" value=" paper" onclick="item(1)"/>
+<input type ="button" value=" scissors" onclick="item(2)"/>
+<input type ="button" value=" tiger " onclick="item(3)"/>
+
+
+<input type ="button" value=" dynamite " onclick="item(4)"/>
+<input type ="button" value=" tsunami " onclick="item(5)"/>
+<input type ="button" value=" lobster " onclick="item(6)"/>
+<input type ="button" value=" person " onclick="item(7)"/>
+
+
+<input type ="button" value=" tree " onclick="item(8)" />
+<input type ="button" value=" glass " onclick="item(9)"/>
+<input type ="button" value=" brad " onclick="item(10)"/>
+<input type ="button" value=" slug " onclick="item(11)"/>
+
+
+<input type ="button" value=" salt " onclick="item(12)"/>
+<input type ="button" value=" bat " onclick="item(13)"/>
+<input type ="button" value=" boomerang " onclick="item(14)"/>
+<input type ="button" value=" thanos "onclick="item(15)"/>
+
+
+<input type ="button" value="plasticbag"onclick="item(16)"/>
+<input type ="button" value=" turtle "onclick="item(17)"/>
+<input type ="button" value=" pan "onclick="item(18)"/>
+<input type ="button" value=" cow "onclick="item(19)"/><br/>
+
+
+<input type="button" value="enter" onclick="choose()"/>
+<image id = "image" src = "images/lava.gif" width=200/>
+
+<image id = "chosen" src = "blue.jfif" width= 250 style = "position:absolute; top:100 left:2000"/>
+</body>
+</html>
